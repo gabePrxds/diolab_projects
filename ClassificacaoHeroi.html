@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Onde você está, Herói?</title>
+</head>
+<body>
+  <h1 id='title'>
+    Classificação do Nível do Herói
+  </h1><br>
+  
+  <form>
+    <h3>Qual o seu nome, herói? </h3><input type="text" id="heroName" required="required" maxlength="50" minlength="1" placeholder="Arthur"><br>
+    <h3>E quantos pontos de XP você tem? </h3><input type="number" id="xpValor" required="required" maxlength="5" minlength="1" placeholder="12000"><br>
+  </form>
+  <h4 id=resultado></h4>
+  
+  <button type="submit" onclick='enter()' id="class">Ver classificação</button><br><br>
+  <button type="submit" onclick='count()' id="farm">Hora de farmar</button><br><br>
+  <button type="submit" onclick='reload()' id="rel">Recomeçar</button>
+  
+  <div id="contagem"></div><br>
+  
+  <script>
+    let nomeHeroi = "";
+    var xpHeroi = 0;
+    let classHeroi = ["Ferro", "Bronze", "Prata", "Ouro", "Platina", "Ascendente", "Imortal", "Radiante"];
+    let ganhoXp = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  
+    document.getElementById('farm').disabled = true;
+    document.getElementById('rel').disabled = true;
+  
+    function reload(){
+      location.reload();
+    }
+  
+    function count(){
+      let i = 0;
+      let j = 0;
+      
+      nomeHeroi = document.getElementById('heroName').value;
+      
+      do {
+        const numeroAleatorio = Math.floor(Math.random() * 100);
+        if (++xpHeroi < 15000){
+          xpHeroi = xpHeroi + numeroAleatorio;
+          document.getElementById('contagem').value = "Parabéns " + nomeHeroi + ", derrotou um monstro! Ganhou " + numeroAleatorio + " XP. Sua experiência subiu para " + xpHeroi + ".";
+          ganhoXp[j] = document.getElementById('contagem').value;
+          i++;          
+        } else if (xpHeroi >= 15000) {
+          document.getElementById('contagem').value = "Você chegou ao seu nível máximo: 15.000 XP";
+          ganhoXp[j] = document.getElementById('contagem').value;
+          i++;
+        } else {
+          document.getElementById('contagem').value = "Houve um erro."
+          ganhoXp[j] = document.getElementById('contagem').value;
+          i++;
+        }
+        j++;
+      } while (i < 10);
+      document.getElementById('contagem').innerHTML = 
+        ganhoXp[0] + '<br>' + 
+        ganhoXp[1] + '<br>' +
+        ganhoXp[2] + '<br>' +
+        ganhoXp[3] + '<br>' +
+        ganhoXp[4] + '<br>' +
+        ganhoXp[5] + '<br>' +
+        ganhoXp[6] + '<br>' +
+        ganhoXp[7] + '<br>' +
+        ganhoXp[8] + '<br>' +
+        ganhoXp[9];
+        
+        if (xpHeroi < 1001){
+        document.getElementById('resultado').innerHTML = "Ora, ora " + nomeHeroi + ", parece que você está na classificação " + classHeroi[0];
+      } else if (xpHeroi < 2001){
+        document.getElementById('resultado').innerHTML = "Ora, ora " + nomeHeroi + ", parece que você está na classificação " + classHeroi[1];
+      } else if (xpHeroi < 5001){
+        document.getElementById('resultado').innerHTML = "Ora, ora " + nomeHeroi + ", parece que você está na classificação " + classHeroi[2];
+      } else if (xpHeroi < 7001){
+        document.getElementById('resultado').innerHTML = "Ora, ora " + nomeHeroi + ", parece que você está na classificação " + classHeroi[3];
+      } else if (xpHeroi < 8001){
+        document.getElementById('resultado').innerHTML = "Ora, ora " + nomeHeroi + ", parece que você está na classificação " + classHeroi[4];
+      } else if (xpHeroi < 9001){
+        document.getElementById('resultado').innerHTML = "Ora, ora " + nomeHeroi + ", parece que você está na classificação " + classHeroi[5];
+      } else if (xpHeroi < 10001){
+        document.getElementById('resultado').innerHTML = "Ora, ora " + nomeHeroi + ", parece que você está na classificação " + classHeroi[6];
+      } else if (xpHeroi >= 10001){
+        document.getElementById('resultado').innerHTML = "Ora, ora " + nomeHeroi + ", parece que você está na classificação " + classHeroi[7];
+      } else {
+        document.getElementById('resultado').innerHTML = "Ops, parece que deu um erro aqui.";
+      } 
+    }
+  
+    function enter(){
+      nomeHeroi = document.getElementById('heroName').value;
+      xpHeroi = document.getElementById('xpValor').value;
+      
+      document.getElementById('farm').disabled = false;
+      document.getElementById('class').disabled = true;
+      document.getElementById('rel').disabled = false;
+    
+      if (xpHeroi < 1001){
+        document.getElementById('resultado').innerHTML = "Ora, ora " + nomeHeroi + ", parece que você está na classificação " + classHeroi[0];
+      } else if (xpHeroi < 2001){
+        document.getElementById('resultado').innerHTML = "Ora, ora " + nomeHeroi + ", parece que você está na classificação " + classHeroi[1];
+      } else if (xpHeroi < 5001){
+        document.getElementById('resultado').innerHTML = "Ora, ora " + nomeHeroi + ", parece que você está na classificação " + classHeroi[2];
+      } else if (xpHeroi < 7001){
+        document.getElementById('resultado').innerHTML = "Ora, ora " + nomeHeroi + ", parece que você está na classificação " + classHeroi[3];
+      } else if (xpHeroi < 8001){
+        document.getElementById('resultado').innerHTML = "Ora, ora " + nomeHeroi + ", parece que você está na classificação " + classHeroi[4];
+      } else if (xpHeroi < 9001){
+        document.getElementById('resultado').innerHTML = "Ora, ora " + nomeHeroi + ", parece que você está na classificação " + classHeroi[5];
+      } else if (xpHeroi < 10001){
+        document.getElementById('resultado').innerHTML = "Ora, ora " + nomeHeroi + ", parece que você está na classificação " + classHeroi[6];
+      } else if (xpHeroi >= 10001){
+        document.getElementById('resultado').innerHTML = "Ora, ora " + nomeHeroi + ", parece que você está na classificação " + classHeroi[7];
+      } else {
+        document.getElementById('resultado').innerHTML = "Ops, parece que deu um erro aqui.";
+      } 
+    }
+  </script>
+</body>
+</html>
+  
