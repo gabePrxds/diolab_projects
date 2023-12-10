@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Calculadora de Partidas Rankeadas</title>
+</head>
+<body>
+  <h1>
+    Calculadora de Partidas Rankeadas
+  </h1>
+
+    <form>
+    <h3>Quantas vitórias você tem? </h3><input type="number" id="vitorias" required="required" maxlength="50" minlength="1" placeholder="insira as vitórias"><br>
+    <h3>Quantas derrotas? </h3><input type="number" id="derrotas" required="required" maxlength="5" minlength="1" placeholder="insira as derrotas"><br>
+  </form>
+  
+  <button type="submit" onclick='totalVitorias(num1,num2)' id="calc">Calcular</button>
+  
+  <div id="resultado"></div><br>
+  
+  <script>
+
+  let num1 = 0;
+  let num2 = 0;
+  
+  function totalVitorias(num1, num2){
+    
+    num1 = document.getElementById('vitorias').value;
+    num2 = document.getElementById('derrotas').value;
+    
+    if (num1 - num2 <= 10){
+        document.getElementById('resultado').innerHTML = "O heroi tem o saldo de " + (num1 - num2) + " e está no ranking Ferro";
+      } else if (num1 - num2 <= 20){
+        document.getElementById('resultado').innerHTML = "O heroi tem o saldo de " + (num1 - num2) + " e está no ranking Bronze";
+      } else if (num1 - num2 <= 50){
+        document.getElementById('resultado').innerHTML = "O heroi tem o saldo de " + (num1 - num2) + " e está no ranking Prata";
+      } else if (num1 - num2 <= 80){
+        document.getElementById('resultado').innerHTML = "O heroi tem o saldo de " + (num1 - num2) + " e está no ranking Ouro";
+      } else if (num1 - num2 <= 90){
+        document.getElementById('resultado').innerHTML = "O heroi tem o saldo de " + (num1 - num2) + " e está no ranking Diamante";
+      } else if (num1 - num2 <= 100){
+        document.getElementById('resultado').innerHTML = "O heroi tem o saldo de " + (num1 - num2) + " e está no ranking Imortal";
+      } else {
+        document.getElementById('resultado').innerHTML = "Ops, parece que deu um erro aqui.";
+      } 
+    
+    alert("O saldo é " + (num1 - num2));
+  }
+  
+  </script>
+</body>
+</html>
