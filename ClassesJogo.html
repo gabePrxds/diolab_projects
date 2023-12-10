@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Classes de um Jogo</title>
+</head>
+<body>
+  <h1>
+    Classes de um Jogo
+  </h1>
+  
+  <form>
+    <h3>Qual seu nome? </h3><input type="text" id="nome" maxlength="50" minlength="1"><br>
+    <h3>Qual sua idade? </h3><input type="number" id="idade" maxlength="5" minlength="1"><br>
+    <h3>Qual sua classe? (escolha entre Mago, Guerreiro, Ninja ou Monge)</h3><input type="text" id="tipo" maxlength="15" minlength="1"><br>    
+  </form>
+  
+  <button type="submit" onclick='caract.atacar()' id="submit">Atacar</button>
+  
+  <p id="resultado"></p><br>
+  
+  <script>  
+  
+  let nomeIns = "Teste";
+  let idadeIns = "66";
+  let tipoIns = "Mago";
+  
+  let caract = new Object();
+  caract.nome = " ";
+  caract.idade = 0;
+  caract.tipo = "Mago";
+  
+  caract.atacar = function(){
+    caract.nome = document.getElementById('nome').value;
+    caract.idade = document.getElementById('idade').value;
+    caract.tipo = document.getElementById('tipo').value;
+
+    if(caract.tipo === "Mago"){
+        document.getElementById('resultado').innerHTML = "O " + caract.tipo + " " + caract.nome + " (" + caract.idade + ") atacou usando bola de fogo";
+        alert("O " + caract.tipo + " " + caract.nome + " (" + caract.idade + ") atacou usando bola de fogo"); 
+      } else if(caract.tipo === "Guerreiro"){
+        document.getElementById('resultado').innerHTML = "O " + caract.tipo + " " + caract.nome + " (" + caract.idade + ") atacou usando machado";
+        alert("O " + caract.tipo + " " + caract.nome + " (" + caract.idade + ") atacou usando machado"); 
+      } else if(caract.tipo === "Monge"){
+        document.getElementById('resultado').innerHTML = "O " + caract.tipo + " " + caract.nome + " (" + caract.idade + ") atacou usando artes marciais";
+        alert("O " + caract.tipo + " " + caract.nome + " (" + caract.idade + ") atacou usando artes marciais"); 
+      } else if(caract.tipo === "Ninja"){
+        document.getElementById('resultado').innerHTML = "O " + caract.tipo + " " + caract.nome + " (" + caract.idade + ") atacou usando shurikens";
+        alert("O " + caract.tipo + " " + caract.nome + " (" + caract.idade + ") atacou usando shurikens"); 
+      } else{
+        document.getElementById('resultado').innerHTML = "Deu erro aqui";
+        alert("Deu erro aqui"); 
+     }
+    };
+
+ </script>
+</body>
+</html>
